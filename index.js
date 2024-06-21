@@ -1,9 +1,15 @@
-import { combineReducers } from 'redux';
-import cartReducer from './cartReducer';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from './reducers';
+import App from './App';
 
-const rootReducer = combineReducers({
-  cart: cartReducer
-  // Add more reducers if you have them
-});
+const store = createStore(rootReducer);
 
-export default rootReducer;
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
